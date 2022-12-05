@@ -120,14 +120,16 @@ public class Source implements CProcess
 	}
 	
 	public static double poisson_process(double t){
-		List list = new ArrayList<>();
+		ArrayList<Double> list = new ArrayList<>();
 		double lambda = 0;
 		
 		while(lambda <= t){
-			lambda = 3 - 2 * Math.sin((5*(Math.PI+lambda))/(6*Math.PI));
+			double newlambda = 3 - 2 * Math.sin((5*(Math.PI+lambda))/(6*Math.PI));
+			lambda = newlambda;
 			System.out.println(lambda);
 			list.add(lambda);
 		}
+		return lambda;
 	
 		
 
