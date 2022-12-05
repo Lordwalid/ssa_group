@@ -125,6 +125,7 @@ public class Source implements CProcess
 		
 		while(lambda <= t){
 			lambda = 3 - 2 * Math.sin((5*(Math.PI+lambda))/(6*Math.PI));
+			System.out.println(lambda);
 			list.add(lambda);
 		}
 	
