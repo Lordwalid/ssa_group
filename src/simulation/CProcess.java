@@ -1,4 +1,4 @@
-package NewName;
+package simulation;
 
 /**
  *	Blueprint for processes

@@ -4,7 +4,7 @@
  *	@version %I%, %G%
  */
 
-package NewName;
+package simulation;
 
 public class Simulation {
 

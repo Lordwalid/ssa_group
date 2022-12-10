@@ -1,4 +1,4 @@
-package NewName;
+package simulation;
 
 /**
  *	A source of products

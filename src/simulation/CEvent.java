@@ -4,7 +4,7 @@
  *	@author Joel Karel
  *	@version %I%, %G%
  */
-package NewName;
+package simulation;
 
 public class CEvent
 {

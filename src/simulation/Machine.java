@@ -1,4 +1,4 @@
-package NewName;
+package simulation;
 
 /**
  *	Machine in a factory
