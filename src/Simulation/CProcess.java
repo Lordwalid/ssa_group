@@ -1,4 +1,4 @@
-package Simulation;
+package simulation;
 
 /**
  *	Blueprint for processes
@@ -15,4 +15,3 @@ public interface CProcess
 	*/
 	public void execute(int type, double tme);
 }
-

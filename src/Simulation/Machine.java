@@ -1,6 +1,4 @@
-package Simulation;
-
-
+package simulation;
 
 /**
  *	Machine in a factory

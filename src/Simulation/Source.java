@@ -1,7 +1,4 @@
-package Simulation;
-
-import java.awt.List;
-import java.util.ArrayList;
+package simulation;
 
 /**
  *	A source of products
@@ -117,21 +114,5 @@ public class Source implements CProcess
 		// Convert it into a exponentially distributed random variate with mean 33
 		double res = -mean*Math.log(u);
 		return res;
-	}
-	
-	public static double poisson_process(double t){
-		ArrayList<Double> list = new ArrayList<>();
-		double lambda = 0;
-		
-		while(lambda <= t){
-			double newlambda = 3 - 2 * Math.sin((5*(Math.PI+lambda))/(6*Math.PI));
-			lambda = newlambda;
-			System.out.println(lambda);
-			list.add(lambda);
-		}
-		return lambda;
-	
-		
-
 	}
 }

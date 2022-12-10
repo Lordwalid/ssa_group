@@ -1,8 +1,8 @@
-package Simulation;
+package simulation;
 
 import java.util.ArrayList;
 /**
- *	Product that is send trough the system
+ *	Product that is sent through the system
  *	@author Joel Karel
  *	@version %I%, %G%
  */
@@ -16,7 +16,6 @@ class Product
 	/** 
 	*	Constructor for the product
 	*	Mark the time at which it is created
-	*	@param create The current time
 	*/
 	public Product()
 	{
