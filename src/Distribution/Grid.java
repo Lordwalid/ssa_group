@@ -10,7 +10,7 @@ public enum Grid {
     NE(7.5,4.33013,12.5,2.5,4.33013*2,0),
     SE(7.5,-4.33013,12.5,2.5,0,-4.33013*2),
     S(0,4.33013*-2, 5,-5,-4.33013,-4.33013*3),
-    SW(-7.5,-4.33013,-12.5,-2.5,0,-4.33013*2),
+    SW(-7.5,-4.33013,-2.5,-12.5,0,-4.33013*2),
     NW(-7.5,4.33013,-2.5,-12.5,4.33013*2,0);
     private double xOff, yOff, xMax, xMin, yMax,yMin;
     Grid(double xOff, double yOff, double xMax, double xMin, double yMax, double yMin) {
