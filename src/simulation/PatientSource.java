@@ -92,6 +92,7 @@ public class PatientSource implements Process
 
 		// todo USE COORDS
 		IVector patient0coords = Generator.getPatients(1).get(0);
+		System.out.println("patient0 co-ordinates: " + patient0coords);
 
 		Patient p = new Patient();
 		p.stamp(tme,"Creation",name);
