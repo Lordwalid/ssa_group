@@ -1,11 +1,5 @@
 package simulation;
 
-import Distribution.Generator;
-import Distribution.Grid;
-import Distribution.IVector;
-
-import java.util.List;
-
 /**
  *	A source of products
  *	This class implements CProcess so that it can execute events.
@@ -28,6 +22,8 @@ public class PatientSource implements Process
 	/** Interarrival time iterator */
 	private int interArrCnt;
 
+	private int regionNumber;
+
 	/**
 	*	Constructor, creates objects
 	*        Interarrival times are exponentially distributed with mean 33
@@ -35,11 +31,12 @@ public class PatientSource implements Process
 	*	@param l	The eventlist that is requested to construct events
 	*	@param n	Name of object
 	*/
-	public PatientSource(Queue q, EventList l, String n)
+	public PatientSource(Queue q, EventList l, String n, int rn)
 	{
 		list = l;
 		queue = q;
 		name = n;
+		regionNumber = rn;
 		meanArrTime=33;
 		// put first event in list for initialization
 		list.add(this,0,drawRandomExponential(meanArrTime)); //target,type,time
@@ -89,12 +86,7 @@ public class PatientSource implements Process
 		// show arrival
 		System.out.println("Arrival at time = " + tme);
 		// give arrived product to queue
-
-		// todo USE COORDS
-		IVector patient0coords = Generator.getPatients(1).get(0);
-		System.out.println("patient0 co-ordinates: " + patient0coords);
-
-		Patient p = new Patient();
+		Patient p = new Patient(regionNumber);
 		p.stamp(tme,"Creation",name);
 		queue.offerPatient(p);
 		// generate duration

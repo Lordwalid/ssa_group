@@ -1,5 +1,8 @@
 package simulation;
 
+import Distribution.Generator;
+import Distribution.IVector;
+
 import java.util.ArrayList;
 /**
  *	Product that is sent through the system
@@ -18,12 +21,14 @@ class Patient
 	*	Constructor for the product
 	*	Mark the time at which it is created
 	*/
-	public Patient()
+	public Patient(int regionNumber)
 	{
 		times = new ArrayList<>();
 		events = new ArrayList<>();
 		stations = new ArrayList<>();
-		//coordinates =
+		IVector coordVector = Generator.getPatients(1).get(regionNumber);
+		coordinates = new double[] {coordVector.x(), coordVector.y()};
+		System.out.println("patient's coordinates " + coordinates[0] + " " + coordinates[1]);
 	}
 	
 	

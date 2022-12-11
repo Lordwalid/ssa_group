@@ -38,7 +38,7 @@ public class Simulation {
 	// A queue for the machine
 	Queue q1 = new Queue();
 	// A source
-	PatientSource region1 = new PatientSource(q1,l1,"Region 1");
+	PatientSource region1 = new PatientSource(q1,l1,"Region 1", 5);
 	// A sink
 	Hospital h = new Hospital("Hospital");
 	// A machine
