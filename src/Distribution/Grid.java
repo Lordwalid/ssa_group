@@ -21,6 +21,18 @@ public enum Grid {
         this.yMax = yMax;
         this.yMin = yMin;
     }
+    public String toString() {
+        switch (this) {
+            case O: return "O";
+            case N: return "N";
+            case NE: return "NE";
+            case SE: return "SE";
+            case S: return "S";
+            case SW: return "SW";
+            case NW: return "NW";
+        }
+        return null;
+    }
 
     public static List<Grid> getPoints() {
         return Arrays.asList(O,N,NE,SE,S,SW,NW);

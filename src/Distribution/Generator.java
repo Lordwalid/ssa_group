@@ -16,21 +16,21 @@ public class Generator {
     // generates 10 randomly distributed x and y coordinates within tuples within the bounds of
     // the first hexagon, second hexagon, etc, until 7th hexagon
     private static void genPrintToString(){
-        List<IVector> A1 = getPatients(10);
-        List<IVector> A2 = getPatients(10);
-        List<IVector> B = getPatients(10);
+        List<IVector> A1 = getPatients(1);
+//        List<IVector> A2 = getPatients(10);
+//        List<IVector> B = getPatients(10);
         System.out.print("A1 size: " + A1.size() + ": ");
         for (IVector coordinate : A1) {
             System.out.print(coordinate.toString() + ", ");
         }
-        System.out.print("\nA2 size: " + A2.size() + ": ");
-        for (IVector coordinate : A2) {
-            System.out.print(coordinate.toString() + ", ");
-        }
-        System.out.print("\nB size: " + B.size() + ": ");
-        for (IVector coordinate : B) {
-            System.out.print(coordinate.toString() + ", ");
-        }
+//        System.out.print("\nA2 size: " + A2.size() + ": ");
+//        for (IVector coordinate : A2) {
+//            System.out.print(coordinate.toString() + ", ");
+//        }
+//        System.out.print("\nB size: " + B.size() + ": ");
+//        for (IVector coordinate : B) {
+//            System.out.print(coordinate.toString() + ", ");
+//        }
     }
 
     public static List<IVector> getPatients(int size) {
@@ -44,8 +44,10 @@ public class Generator {
 //                System.out.println(g.getxMin());
 //                System.out.println(g.getyMax());
 //                System.out.println(g.getyMin());
+
                 double x = (new Random()).nextDouble(abs(g.getxMax() - g.getxMin())) + g.getxMin();
                 double y = (new Random()).nextDouble(abs(g.getyMax() - g.getyMin())) + g.getyMin();
+                System.out.println("hexagon type: " + g.toString() + " " + x + " " + y);
                 // check bounds
                 if (isOut(x,y,g)) {
                     queue.add(new Vector2D(x, y));
