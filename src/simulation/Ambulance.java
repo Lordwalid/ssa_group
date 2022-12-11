@@ -1,5 +1,6 @@
 package simulation;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 
 /**
@@ -120,7 +121,12 @@ public class Ambulance implements Process, Acceptor
 			double timeToPatient = manhattanDist(coordinates, patient.getCoordinates());
 			double timeToHospital = manhattanDist(patient.getCoordinates(), Simulation.h.coordinates);
 			double drivingTime = timeToPatient + timeToHospital;
-			double duration = drawRandomExponential(meanProcTime);
+
+			System.out.println("patient's coord " + Arrays.toString(patient.getCoordinates()));
+			System.out.println("ambulance's coord " + Arrays.toString(coordinates));
+
+			double processingTime = drawRandomErlang(3,1);
+			double duration = drivingTime + processingTime;
 			// Create a new event in the event list
 			double tme = eventlist.getTime();
 			eventlist.add(this,0,tme+duration); //target,type,time
@@ -147,6 +153,15 @@ public class Ambulance implements Process, Acceptor
 		return Math.abs(coord2[0] - coord1[0]) + Math.abs(coord2[1] - coord1[1]);
 	}
 
+	public double drawRandomErlang(int k, double lambda){
+		double sigma = 0;
+		double u;
+		for (int i=0; i<k; i++){
+			u = Math.random();
+			sigma = sigma + Math.log(u);
+		}
+		return 1/lambda * sigma;
+	}
 
 	public static double drawRandomExponential(double mean)
 	{
