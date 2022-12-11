@@ -6,10 +6,10 @@ import java.util.ArrayList;
  *	@author Joel Karel
  *	@version %I%, %G%
  */
-public class Sink implements ProductAcceptor
+public class Hospital implements Acceptor
 {
 	/** All products are kept */
-	private ArrayList<Product> products;
+	private ArrayList<Patient> patients;
 	/** All properties of products are kept */
 	private ArrayList<Integer> numbers;
 	private ArrayList<Double> times;
@@ -23,10 +23,10 @@ public class Sink implements ProductAcceptor
 	/**
 	*	Constructor, creates objects
 	*/
-	public Sink(String n)
+	public Hospital(String n)
 	{
 		name = n;
-		products = new ArrayList<>();
+		patients = new ArrayList<>();
 		numbers = new ArrayList<>();
 		times = new ArrayList<>();
 		events = new ArrayList<>();
@@ -35,10 +35,10 @@ public class Sink implements ProductAcceptor
 	}
 	
         @Override
-	public boolean giveProduct(Product p)
+	public boolean acceptPatient(Patient p)
 	{
 		number++;
-		products.add(p);
+		patients.add(p);
 		// store stamps
 		ArrayList<Double> t = p.getTimes();
 		ArrayList<String> e = p.getEvents();

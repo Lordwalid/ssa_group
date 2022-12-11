@@ -7,12 +7,12 @@ package simulation;
  *	@author Joel Karel
  *	@version %I%, %G%
  */
-public class Source implements CProcess
+public class PatientSource implements Process
 {
 	/** Eventlist that will be requested to construct events */
-	private CEventList list;
+	private EventList list;
 	/** Queue that buffers products for the machine */
-	private ProductAcceptor queue;
+	private Queue queue;
 	/** Name of the source */
 	private String name;
 	/** Mean interarrival time */
@@ -29,7 +29,7 @@ public class Source implements CProcess
 	*	@param l	The eventlist that is requested to construct events
 	*	@param n	Name of object
 	*/
-	public Source(ProductAcceptor q,CEventList l,String n)
+	public PatientSource(Queue q, EventList l, String n)
 	{
 		list = l;
 		queue = q;
@@ -47,7 +47,7 @@ public class Source implements CProcess
 	*	@param n	Name of object
 	*	@param m	Mean arrival time
 	*/
-	public Source(ProductAcceptor q,CEventList l,String n,double m)
+	public PatientSource(Queue q, EventList l, String n, double m)
 	{
 		list = l;
 		queue = q;
@@ -65,7 +65,7 @@ public class Source implements CProcess
 	*	@param n	Name of object
 	*	@param ia	interarrival times
 	*/
-	public Source(ProductAcceptor q,CEventList l,String n,double[] ia)
+	public PatientSource(Queue q, EventList l, String n, double[] ia)
 	{
 		list = l;
 		queue = q;
@@ -83,9 +83,9 @@ public class Source implements CProcess
 		// show arrival
 		System.out.println("Arrival at time = " + tme);
 		// give arrived product to queue
-		Product p = new Product();
+		Patient p = new Patient();
 		p.stamp(tme,"Creation",name);
-		queue.giveProduct(p);
+		queue.offerPatient(p);
 		// generate duration
 		if(meanArrTime>0)
 		{
@@ -93,6 +93,7 @@ public class Source implements CProcess
 			// Create a new event in the eventlist
 			list.add(this,0,tme+duration); //target,type,time
 		}
+/*
 		else
 		{
 			interArrCnt++;
@@ -105,6 +106,7 @@ public class Source implements CProcess
 				list.stop();
 			}
 		}
+*/
 	}
 	
 	public static double drawRandomExponential(double mean)

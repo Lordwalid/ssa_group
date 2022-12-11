@@ -6,7 +6,7 @@ import java.util.ArrayList;
  *	@author Joel Karel
  *	@version %I%, %G%
  */
-class Product
+class Patient
 {
 	/** Stamps for the products */
 	private ArrayList<Double> times;
@@ -17,7 +17,7 @@ class Product
 	*	Constructor for the product
 	*	Mark the time at which it is created
 	*/
-	public Product()
+	public Patient()
 	{
 		times = new ArrayList<>();
 		events = new ArrayList<>();

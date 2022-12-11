@@ -6,10 +6,10 @@
  */
 package simulation;
 
-public class CEvent
+public class Event
 {
 	/** The object involved with the event */
-	private CProcess target;
+	private Process target;
 	/** The type of the event */
 	private int type;
 	/** The time on which the event will be executed */
@@ -21,7 +21,7 @@ public class CEvent
 	*	@param tp	The type of the event
 	*	@param tme	The time on which the event will be executed
 	*/
-	public CEvent(CProcess dl,int tp, double tme)
+	public Event(Process dl, int tp, double tme)
 	{
 		target=dl;
 		type=tp;
