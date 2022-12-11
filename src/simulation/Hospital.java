@@ -19,6 +19,7 @@ public class Hospital implements Acceptor
 	private int number;
 	/** Name of the sink */
 	private String name;
+	private final double [] coordinates = new double[] {0.0, 0.0} ;
 	
 	/**
 	*	Constructor, creates objects
@@ -33,7 +34,11 @@ public class Hospital implements Acceptor
 		stations = new ArrayList<>();
 		number = 0;
 	}
-	
+
+	public double[] getCoordinates(){
+		return coordinates;
+	}
+
         @Override
 	public boolean acceptPatient(Patient p)
 	{

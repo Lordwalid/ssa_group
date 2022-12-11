@@ -6,31 +6,46 @@
 
 package simulation;
 
+import java.util.ArrayList;
+
 public class Simulation {
 
-    public EventList list;
-    public Queue queue;
-    public PatientSource patientSource;
-    public Hospital hospital;
-    public Ambulance mach;
+    public static ArrayList <EventList> eventLists;
+    public static ArrayList <Queue> queues;
+    public static ArrayList <PatientSource> patientSources;
+    public static Hospital h;
+    public static ArrayList <Ambulance> ambulances;
 	
 
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-    	// Create an eventlist
-	EventList l = new EventList();
+/*
+        for (int i=0; i<7; i++){
+            eventLists.add(new EventList());
+            queues.add(new Queue());
+            patientSources.add(new PatientSource(queues.get(i), eventLists.get(i),"PSource" + i));
+        }
+
+        for (int i=0; i < patientSources.size(); i++){
+            ambulances.add(new Ambulance(queues.get(i), h, eventLists.get(i),"Ambulance" + i));
+        }
+
+*/
+    // Create an eventlist
+	EventList l1 = new EventList();
 	// A queue for the machine
-	Queue q = new Queue();
+	Queue q1 = new Queue();
 	// A source
-	PatientSource s = new PatientSource(q,l,"Source 1");
+	PatientSource region1 = new PatientSource(q1,l1,"Region 1");
 	// A sink
-	Hospital si = new Hospital("Sink 1");
+	Hospital h = new Hospital("Hospital");
 	// A machine
-	Ambulance m = new Ambulance(q,si,l,"Machine 1");
+	Ambulance a1 = new Ambulance(q1,h,l1,"Ambulance 1");
 	// start the eventlist
-	l.start(2000); // 2000 is maximum time
+	l1.start(2000); // 2000 is maximum time
+
     }
     
 }

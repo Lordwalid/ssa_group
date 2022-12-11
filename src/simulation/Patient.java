@@ -12,7 +12,8 @@ class Patient
 	private ArrayList<Double> times;
 	private ArrayList<String> events;
 	private ArrayList<String> stations;
-	
+
+	private double[] coordinates;
 	/** 
 	*	Constructor for the product
 	*	Mark the time at which it is created
@@ -22,6 +23,7 @@ class Patient
 		times = new ArrayList<>();
 		events = new ArrayList<>();
 		stations = new ArrayList<>();
+		//coordinates =
 	}
 	
 	

@@ -25,10 +25,8 @@ public class Ambulance implements Process, Acceptor
 	private double[] processingTimes;
 	/** Processing time iterator */
 	private int procCnt;
+	private double [] coordinates;
 
-	private int xCoord;
-	private int yCoord;
-	
 
 	/**
 	*	Constructor
