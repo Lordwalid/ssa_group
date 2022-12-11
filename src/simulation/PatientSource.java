@@ -1,5 +1,8 @@
 package simulation;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+
 /**
  *	A source of products
  *	This class implements CProcess so that it can execute events.
@@ -88,6 +91,7 @@ public class PatientSource implements Process
 		// give arrived product to queue
 		Patient p = new Patient(regionNumber);
 		p.stamp(tme,"Creation",name);
+//		System.out.println("generated new patient at " + Arrays.toString(p.getCoordinates()));
 		queue.offerPatient(p);
 		// generate duration
 		if(meanArrTime>0)

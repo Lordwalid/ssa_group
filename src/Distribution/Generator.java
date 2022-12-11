@@ -47,7 +47,7 @@ public class Generator {
 
                 double x = (new Random()).nextDouble(abs(g.getxMax() - g.getxMin())) + g.getxMin();
                 double y = (new Random()).nextDouble(abs(g.getyMax() - g.getyMin())) + g.getyMin();
-                System.out.println("hexagon type: " + g.toString() + " " + x + " " + y);
+//                System.out.println("hexagon type: " + g.toString() + " " + x + " " + y);
                 // check bounds
                 if (isOut(x,y,g)) {
                     queue.add(new Vector2D(x, y));

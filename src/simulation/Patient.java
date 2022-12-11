@@ -28,7 +28,7 @@ class Patient
 		stations = new ArrayList<>();
 		IVector coordVector = Generator.getPatients(1).get(regionNumber);
 		coordinates = new double[] {coordVector.x(), coordVector.y()};
-		System.out.println("patient's coordinates " + coordinates[0] + " " + coordinates[1]);
+//		System.out.println("patient's coordinates " + coordinates[0] + " " + coordinates[1]);
 	}
 	
 	
@@ -78,4 +78,7 @@ class Patient
 		tmp = stations.toArray(tmp);
 		return tmp;
 	}
+	 public double[] getCoordinates(){
+		return coordinates;
+	 }
 }

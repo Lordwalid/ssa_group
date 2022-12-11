@@ -40,7 +40,7 @@ public class Simulation {
 	// A source
 	PatientSource region1 = new PatientSource(q1,l1,"Region 1", 5);
 	// A sink
-	Hospital h = new Hospital("Hospital");
+	 h = new Hospital("Hospital");
 	// A machine
 	Ambulance a1 = new Ambulance(q1,h,l1,"Ambulance 1");
 	// start the eventlist

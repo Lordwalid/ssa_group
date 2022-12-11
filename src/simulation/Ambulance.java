@@ -1,5 +1,7 @@
 package simulation;
 
+import java.util.Arrays;
+
 /**
  *	Machine in a factory
  *	@author Joel Karel
@@ -26,6 +28,7 @@ public class Ambulance implements Process, Acceptor
 	/** Processing time iterator */
 	private int procCnt;
 	private double [] coordinates;
+	private double [] coordWD = new double[]{1.0,1.0};
 
 
 	/**
@@ -43,6 +46,7 @@ public class Ambulance implements Process, Acceptor
 		sink=s;
 		eventlist=e;
 		name=n;
+		coordinates = coordWD;
 		meanProcTime=30;
 		requestNextPatient();
 	}
@@ -51,6 +55,10 @@ public class Ambulance implements Process, Acceptor
 		if(queue.checkForNextPatient(this)){
 			acceptPatient(queue.giveNextPatient());
 		}
+		else {
+			coordinates = coordWD;
+		}
+
 	}
 
 	/**
@@ -65,6 +73,7 @@ public class Ambulance implements Process, Acceptor
 		// Remove product from system
 		patient.stamp(tme,"Production complete",name);
 		sink.acceptPatient(patient);
+		coordinates = Simulation.h.coordinates;
 		patient =null;
 		// set machine status to idle
 		status='i';
@@ -84,7 +93,7 @@ public class Ambulance implements Process, Acceptor
 		if(status=='i')
 		{
 			// accept the product
-			patient =p;
+			patient = p;
 			// mark starting time
 			patient.stamp(eventlist.getTime(),"Production started",name);
 			// start production
@@ -105,9 +114,12 @@ public class Ambulance implements Process, Acceptor
 	{
 		// generate duration
 		if(meanProcTime>0)
-		{	// todo: implement duration
+		{	// todo: implement processing time
 			// consists of 3 values:
-			// driving time to the patient, processing time (distributed by Gamma), driving time to the hospital
+			// processing time distributed by Gamma
+			double timeToPatient = manhattanDist(coordinates, patient.getCoordinates());
+			double timeToHospital = manhattanDist(patient.getCoordinates(), Simulation.h.coordinates);
+			double drivingTime = timeToPatient + timeToHospital;
 			double duration = drawRandomExponential(meanProcTime);
 			// Create a new event in the event list
 			double tme = eventlist.getTime();
@@ -130,6 +142,11 @@ public class Ambulance implements Process, Acceptor
 			}
 		}*/
 	}
+
+	private double manhattanDist(double[] coord1, double [] coord2 ){
+		return Math.abs(coord2[0] - coord1[0]) + Math.abs(coord2[1] - coord1[1]);
+	}
+
 
 	public static double drawRandomExponential(double mean)
 	{

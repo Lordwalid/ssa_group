@@ -39,7 +39,7 @@ public class Queue
 	}
 
 	public Patient giveNextPatient(){
-		return patientsInLine.get(0);
+		return patientsInLine.remove(0);
 	}
 
 /*
