@@ -33,8 +33,7 @@ public class Generator {
         }
     }
 
-    private static List<IVector> getPatients(int size) {
-        List<IVector> coords = Grid.getVecs();
+    public static List<IVector> getPatients(int size) {
         List<IVector> queue = new ArrayList<>();
         for (Grid g : Grid.getPoints()) {
             // randomBound(max - min) + min

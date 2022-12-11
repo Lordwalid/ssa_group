@@ -1,5 +1,11 @@
 package simulation;
 
+import Distribution.Generator;
+import Distribution.Grid;
+import Distribution.IVector;
+
+import java.util.List;
+
 /**
  *	A source of products
  *	This class implements CProcess so that it can execute events.
@@ -83,6 +89,10 @@ public class PatientSource implements Process
 		// show arrival
 		System.out.println("Arrival at time = " + tme);
 		// give arrived product to queue
+
+		// todo USE COORDS
+		IVector patient0coords = Generator.getPatients(1).get(0);
+
 		Patient p = new Patient();
 		p.stamp(tme,"Creation",name);
 		queue.offerPatient(p);
