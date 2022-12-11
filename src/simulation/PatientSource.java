@@ -94,26 +94,16 @@ public class PatientSource implements Process
 //		System.out.println("generated new patient at " + Arrays.toString(p.getCoordinates()));
 		queue.offerPatient(p);
 		// generate duration
-		if(meanArrTime>0)
-		{
-			double duration = drawRandomExponential(meanArrTime);
-			// Create a new event in the eventlist
-			list.add(this,0,tme+duration); //target,type,time
-		}
-/*
-		else
-		{
-			interArrCnt++;
-			if(interarrivalTimes.length>interArrCnt)
-			{
-				list.add(this,0,tme+interarrivalTimes[interArrCnt]); //target,type,time
-			}
-			else
-			{
-				list.stop();
-			}
-		}
-*/
+
+		// first, calculate lambda at this point in time (t is measured in hours)
+		double lambda = 3 - 2*Math.sin(5*(Math.PI + tme/60)/(6*Math.PI));
+
+		// interarrival times in Poisson process are distributed as exponential RandVars; mean = 1/lambda
+
+		double duration = drawRandomExponential(1/lambda);
+		// Create a new event in the eventlist
+		list.add(this,0,tme+duration); //target,type,time
+
 	}
 	
 	public static double drawRandomExponential(double mean)

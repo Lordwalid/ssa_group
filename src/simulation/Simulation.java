@@ -31,7 +31,6 @@ public class Simulation {
         for (int i=0; i < patientSources.size(); i++){
             ambulances.add(new Ambulance(queues.get(i), h, eventLists.get(i),"Ambulance" + i));
         }
-
 */
     // Create an eventlist
 	EventList l1 = new EventList();
