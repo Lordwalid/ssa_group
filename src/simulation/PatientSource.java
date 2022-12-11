@@ -88,8 +88,10 @@ public class PatientSource implements Process
 	{
 		// show arrival
 		System.out.println("Arrival at time = " + tme);
-		// give arrived product to queue
-		Patient p = new Patient(regionNumber);
+		int priority = -1;
+		priority = (int) Math.floor(Math.random()*3);
+		// give arrived patient to queue
+		Patient p = new Patient(regionNumber,priority);
 		p.stamp(tme,"Creation",name);
 //		System.out.println("generated new patient at " + Arrays.toString(p.getCoordinates()));
 		queue.offerPatient(p);

@@ -16,16 +16,22 @@ class Patient
 	private ArrayList<String> events;
 	private ArrayList<String> stations;
 
+
 	private double[] coordinates;
+
+	private int priority;
+	// 0 = A1 (most urgent), 1 = B, 2 = A2 (least urgent)
+
 	/** 
-	*	Constructor for the product
+	*	Constructor for the patient
 	*	Mark the time at which it is created
 	*/
-	public Patient(int regionNumber)
+	public Patient(int regionNumber, int prio)
 	{
 		times = new ArrayList<>();
 		events = new ArrayList<>();
 		stations = new ArrayList<>();
+		priority = prio;
 		IVector coordVector = Generator.getPatients(1).get(regionNumber);
 		coordinates = new double[] {coordVector.x(), coordVector.y()};
 //		System.out.println("patient's coordinates " + coordinates[0] + " " + coordinates[1]);
@@ -53,7 +59,7 @@ class Patient
 	{
 		return stations;
 	}
-	
+
 	public double[] getTimesAsArray()
 	{
 		times.trimToSize();
@@ -80,5 +86,9 @@ class Patient
 	}
 	 public double[] getCoordinates(){
 		return coordinates;
+	 }
+
+	 public int getPriority(){
+		return priority;
 	 }
 }

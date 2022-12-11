@@ -71,8 +71,26 @@ public class Queue
 	public void offerPatient(Patient p)
 	{
 		// Check if there is any ambulance in the region that could accept the patient
-		if(ambulanceQueue.size() < 1)
-			patientsInLine.add(p); // if there is none, add patient to the line
+		if(ambulanceQueue.size() < 1) {
+			if (patientsInLine.size() == 0) {
+				patientsInLine.add(p); // add the first patient
+				//System.out.println("added first patient with priority " + p.getPriority());
+			}
+			else {
+				//System.out.println("patients in line: " + patientsInLine.size());
+				//-----------
+				// looping through all patients in line, when found one with larger priority (i.e. less important), put new one before them
+				for (int i = 0; i < patientsInLine.size(); i++) {
+					if (patientsInLine.get(i).getPriority() > p.getPriority()) {
+						patientsInLine.add(i, p);
+						//System.out.println("patient's priority is " + p.getPriority() + ", adding them before next one with priority " + patientsInLine.get(i + 1).getPriority());
+						return; // if we found where to place the patient before the less prioritized one
+					}
+				}
+				patientsInLine.add(p); // if we didn't find anyone less urgent, put them in the end
+				//System.out.println("priority is " + p.getPriority() + ", putting in the end");
+			}
+		}
 		else
 		{
 			ambulanceQueue.get(0).acceptPatient(p);
@@ -80,5 +98,8 @@ public class Queue
 		}
 	}
 
+	public ArrayList<Patient> getCurrentLine(){
+		return patientsInLine;
+	}
 
 }

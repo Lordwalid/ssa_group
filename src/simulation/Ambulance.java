@@ -70,9 +70,9 @@ public class Ambulance implements Process, Acceptor
 	public void execute(int type, double tme)
 	{
 		// show arrival
-		System.out.println("Product finished at time = " + tme);
+		System.out.println("Patient delivered to hospital at time = " + tme);
 		// Remove product from system
-		patient.stamp(tme,"Production complete",name);
+		patient.stamp(tme,"Delivery complete",name);
 		sink.acceptPatient(patient);
 		coordinates = Simulation.h.coordinates;
 		patient =null;
@@ -96,7 +96,7 @@ public class Ambulance implements Process, Acceptor
 			// accept the product
 			patient = p;
 			// mark starting time
-			patient.stamp(eventlist.getTime(),"Production started",name);
+			patient.stamp(eventlist.getTime(),"Delivery started",name);
 			// start production
 			startProduction();
 			// Flag that the patient
