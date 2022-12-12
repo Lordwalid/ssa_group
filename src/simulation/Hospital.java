@@ -20,7 +20,9 @@ public class Hospital implements Acceptor
 	/** Name of the sink */
 	private String name;
 	public final double [] coordinates = new double[] {0.0, 0.0} ;
-	
+
+	public final double[][] wdcoordinates = new double[][]{{0.0,0.0},{0.0,4.33013*2}, {7.5, 4.33013}, {7.5, -4.33013},{0.0, 4.33013*-2},{-7.5,-4.33013},{-7.5,4.33013}};
+
 	/**
 	*	Constructor, creates objects
 	*/

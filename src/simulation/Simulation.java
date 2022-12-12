@@ -15,7 +15,7 @@ public class Simulation {
     public static ArrayList <PatientSource> patientSources;
     public static Hospital h;
     public static ArrayList<ArrayList <Ambulance>> ambulances;
-
+    public static final int numberAmbulancesPerRegion = 5;
 
     /**
      * @param args the command line arguments
@@ -36,8 +36,8 @@ public class Simulation {
             // A source
             patientSources.add(new PatientSource(queues.get(i), eventLists.get(i), "Region " + i, i));
             ambulances.add(new ArrayList<>());
-            for (int j = 0; j <5; j++){
-                ambulances.get(i).add(new Ambulance(queues.get(i),h,eventLists.get(i), "Ambulance " + (j+1) + " in region " + i));
+            for (int j = 0; j < numberAmbulancesPerRegion; j++){
+                ambulances.get(i).add(new Ambulance(queues.get(i),h,eventLists.get(i), "Ambulance " + (j+1) + " in region " + i, h.wdcoordinates[i]));
             }
 
         }

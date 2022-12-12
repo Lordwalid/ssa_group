@@ -29,7 +29,7 @@ public class Ambulance implements Process, Acceptor
 	/** Processing time iterator */
 	private int procCnt;
 	private double [] coordinates;
-	private double [] coordWD = new double[]{0.0,0.0};
+	private double [] coordWD;
 
 
 	/**
@@ -40,8 +40,9 @@ public class Ambulance implements Process, Acceptor
 	*	@param e	Event list that will manage events
 	*	@param n	The name of the machine
 	*/
-	public Ambulance(Queue q, Acceptor s, EventList e, String n)
+	public Ambulance(Queue q, Acceptor s, EventList e, String n, double[] cwd)
 	{
+		coordWD = cwd;
 		status='i';
 		queue=q;
 		sink=s;
