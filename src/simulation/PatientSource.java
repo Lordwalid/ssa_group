@@ -87,7 +87,7 @@ public class PatientSource implements Process
 	public void execute(int type, double tme)
 	{
 		// show arrival
-		System.out.println("Arrival at time = " + tme);
+//		System.out.println("Arrival at time = " + tme);
 		int priority = -1;
 		priority = (int) Math.floor(Math.random()*3);
 		// give arrived patient to queue
@@ -99,10 +99,7 @@ public class PatientSource implements Process
 
 		// first, calculate lambda at this point in time (t is measured in hours)
 		double lambda = 3 - 2*Math.sin(5*(Math.PI + tme/60)/(6*Math.PI));
-
-		// interarrival times in Poisson process are distributed as exponential RandVars; mean = 1/lambda
-
-		double duration = drawRandomExponential(1/lambda);
+		double duration = drawRandomExponential(lambda);
 		// Create a new event in the eventlist
 		list.add(this,0,tme+duration); //target,type,time
 

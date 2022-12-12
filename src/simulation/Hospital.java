@@ -15,7 +15,7 @@ public class Hospital implements Acceptor
 	private ArrayList<Double> times;
 	private ArrayList<String> events;
 	private ArrayList<String> stations;
-	/** Counter to number products */
+	/** Counter to number patients */
 	private int number;
 	/** Name of the sink */
 	private String name;
@@ -88,5 +88,13 @@ public class Hospital implements Acceptor
 		String[] tmp = new String[stations.size()];
 		tmp = stations.toArray(tmp);
 		return tmp;
+	}
+
+	public int getNumberPatients(){
+		return number;
+	}
+
+	public ArrayList<Patient> getPatients(){
+		return patients;
 	}
 }

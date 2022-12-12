@@ -29,7 +29,7 @@ public class Ambulance implements Process, Acceptor
 	/** Processing time iterator */
 	private int procCnt;
 	private double [] coordinates;
-	private double [] coordWD = new double[]{1.0,1.0};
+	private double [] coordWD = new double[]{0.0,0.0};
 
 
 	/**
@@ -70,11 +70,12 @@ public class Ambulance implements Process, Acceptor
 	public void execute(int type, double tme)
 	{
 		// show arrival
-		System.out.println("Patient delivered to hospital at time = " + tme);
+//		System.out.println("Patient delivered to hospital at time = " + tme + " by " + name + ", from " + Arrays.toString(patient.getCoordinates()));
 		// Remove product from system
 		patient.stamp(tme,"Delivery complete",name);
 		sink.acceptPatient(patient);
 		coordinates = Simulation.h.coordinates;
+//		System.out.println(patient.getTimes());
 		patient =null;
 		// set machine status to idle
 		status='i';
@@ -115,15 +116,16 @@ public class Ambulance implements Process, Acceptor
 	{
 		// generate duration
 		if(meanProcTime>0)
-		{	// todo: implement processing time
-			// consists of 3 values:
-			// processing time distributed by Gamma
+		{
 			double timeToPatient = manhattanDist(coordinates, patient.getCoordinates());
 			double timeToHospital = manhattanDist(patient.getCoordinates(), Simulation.h.coordinates);
 			double drivingTime = timeToPatient + timeToHospital;
 
-			System.out.println("patient's coord " + Arrays.toString(patient.getCoordinates()));
-			System.out.println("ambulance's coord " + Arrays.toString(coordinates));
+//			// mark starting time
+//			patient.stamp(eventlist.getTime() + timeToPatient,"Delivery started",name);
+
+//			System.out.println("patient's coord " + Arrays.toString(patient.getCoordinates()));
+//			System.out.println("ambulance's coord " + Arrays.toString(coordinates));
 
 			double processingTime = drawRandomErlang(3,1);
 			double duration = drivingTime + processingTime;
