@@ -9,7 +9,6 @@ package simulation;
 import java.util.ArrayList;
 
 public class Simulation {
-
     public static ArrayList <EventList> eventLists;
     public static ArrayList <Queue> queues;
     public static ArrayList <PatientSource> patientSources;
@@ -39,7 +38,6 @@ public class Simulation {
             for (int j = 0; j < numberAmbulancesPerRegion; j++){
                 ambulances.get(i).add(new Ambulance(queues.get(i),h,eventLists.get(i), "Ambulance " + (j+1) + " in region " + i, h.wdcoordinates[i]));
             }
-
         }
 
         for (EventList eventList : eventLists) {
@@ -52,7 +50,7 @@ public class Simulation {
             System.out.println(h.getPatients().get(i).getPriority() + "|" + callTime + "|" + deliveryTime);
         }
 
-        System.out.println("total number of patients = " + h.getNumberPatients());
+//        System.out.println("total number of patients = " + h.getNumberPatients());
 
     }
     

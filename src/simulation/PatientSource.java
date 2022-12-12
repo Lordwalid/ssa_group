@@ -95,7 +95,6 @@ public class PatientSource implements Process
 		p.stamp(tme,"Creation",name);
 //		System.out.println("generated new patient at " + Arrays.toString(p.getCoordinates()));
 		queue.offerPatient(p);
-		// generate duration
 
 		// first, calculate lambda at this point in time (t is measured in hours)
 		double lambda = 3 - 2*Math.sin(5*(Math.PI + tme/60)/(6*Math.PI));

@@ -42,26 +42,6 @@ public class Queue
 		return patientsInLine.remove(0);
 	}
 
-/*
-	public void requestNextPatient(Ambulance ambulance)
-	{
-		// This is only possible with a non-empty queue
-		if(patientsInLine.size()>0)
-		{
-			// If the machine accepts the product
-			if(ambulance.acceptPatient(patientsInLine.get(0)))
-			{
-				patientsInLine.remove(0);// Remove it from the queue
-			}
-		}
-		else
-		{
-			ambulanceQueue.add(ambulance);
-		}
-	}
-*/
-
-	
 
 	/**
 	*	Offer a patient to the ambulance
@@ -98,8 +78,5 @@ public class Queue
 		}
 	}
 
-	public ArrayList<Patient> getCurrentLine(){
-		return patientsInLine;
-	}
 
 }

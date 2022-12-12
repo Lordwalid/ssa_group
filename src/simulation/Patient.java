@@ -34,7 +34,6 @@ class Patient
 		priority = prio;
 		IVector coordVector = Generator.getPatients(1).get(regionNumber);
 		coordinates = new double[] {coordVector.x(), coordVector.y()};
-//		System.out.println("patient's coordinates " + coordinates[0] + " " + coordinates[1]);
 	}
 	
 	

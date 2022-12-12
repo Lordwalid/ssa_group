@@ -1,8 +1,5 @@
 package simulation;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-
 /**
  *	Machine in a factory
  *	@author Joel Karel
@@ -72,7 +69,6 @@ public class Ambulance implements Process, Acceptor
 	{
 		// show arrival
 //		System.out.println("Patient delivered to hospital at time = " + tme + " by " + name + ", from " + Arrays.toString(patient.getCoordinates()));
-		// Remove product from system
 		patient.stamp(tme,"Delivery complete",name);
 		sink.acceptPatient(patient);
 		coordinates = Simulation.h.coordinates;
@@ -121,13 +117,6 @@ public class Ambulance implements Process, Acceptor
 			double timeToPatient = manhattanDist(coordinates, patient.getCoordinates());
 			double timeToHospital = manhattanDist(patient.getCoordinates(), Simulation.h.coordinates);
 			double drivingTime = timeToPatient + timeToHospital;
-
-//			// mark starting time
-//			patient.stamp(eventlist.getTime() + timeToPatient,"Delivery started",name);
-
-//			System.out.println("patient's coord " + Arrays.toString(patient.getCoordinates()));
-//			System.out.println("ambulance's coord " + Arrays.toString(coordinates));
-
 			double processingTime = drawRandomErlang(3,1);
 			double duration = drivingTime + processingTime;
 			// Create a new event in the event list
@@ -136,20 +125,6 @@ public class Ambulance implements Process, Acceptor
 			// set status to busy
 			status='b';
 		}
-/*		else
-		{
-			if(processingTimes.length>procCnt)
-			{
-				eventlist.add(this,0,eventlist.getTime()+processingTimes[procCnt]); //target,type,time
-				// set status to busy
-				status='b';
-				procCnt++;
-			}
-			else
-			{
-				eventlist.stop();
-			}
-		}*/
 	}
 
 	private double manhattanDist(double[] coord1, double [] coord2 ){
